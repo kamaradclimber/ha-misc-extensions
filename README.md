@@ -34,7 +34,7 @@ are visible, matching `GetLiveContext`.
 ### Install via HACS
 
 The repository is not in the default HACS catalog, so add it as a custom
-repository once (this requires a GitHub release to exist — see [Releases](#releases)):
+repository once. A GitHub release must exist first (run `./release.sh`):
 
 1. In HACS, go to the three-dots menu (top right) → **Custom repositories**.
 2. Repository URL: `https://github.com/kamaradclimber/ha-misc-extensions`,
@@ -68,22 +68,3 @@ Open the integration's **Configure** button to toggle a single option:
 
 Options are read on every LLM request, so changing them takes effect on the
 assistant's next message — no restart needed.
-
-### Releases
-
-HACS installs from GitHub releases, not from `main`. Publish a tag such as
-`v0.2.1` (matching `manifest.json`'s `version`) for the custom repository to
-become installable.
-
-### Development
-
-Import-check the platforms against a Home Assistant Core checkout:
-
-```sh
-pip install probatio==0.13.0
-python -c "import custom_components.misc_extensions.llm"
-python -c "import custom_components.misc_extensions.config_flow"
-```
-
-With the Core source on `PYTHONPATH`, the modules should import cleanly. There is
-intentionally no test suite here yet.
