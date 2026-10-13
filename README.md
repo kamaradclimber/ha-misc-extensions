@@ -1,6 +1,6 @@
 # ha-misc-extensions
 
-A collection of small, experimental Home Assistant extensions that do not
+My collection of small, experimental Home Assistant extensions that do not
 deserve their own repository.
 
 ## `misc_extensions`
@@ -27,7 +27,6 @@ Parameters:
 | -------- | -------- | ------------------------------------------------------------------ |
 | `name`   | yes      | Entity name, alias, or `entity_id` to inspect.                     |
 | `domain` | no       | Restrict to one or more domains, e.g. `sensor` or `["light", "switch"]`. |
-| `area`   | no       | Restrict to an area name or alias.                                 |
 
 Scope: only entities [exposed to the assistant](https://www.home-assistant.io/voice_control/voice_remote_expose_devices/)
 are visible, matching `GetLiveContext`.

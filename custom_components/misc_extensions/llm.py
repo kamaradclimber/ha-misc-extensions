@@ -63,17 +63,12 @@ def _async_get_exposed_states(hass: HomeAssistant, assistant: str) -> list[State
 def _match_error(
     match_result: intent.MatchTargetsResult,
     name: str,
-    area: str | None,
     domains: list[str] | None,
 ) -> str:
     """Build an actionable error message for a failed entity match."""
     reason = match_result.no_match_reason
-    if reason is intent.MatchFailedReason.INVALID_AREA:
-        return f"Area '{match_result.no_match_name}' does not exist"
     if reason is intent.MatchFailedReason.NAME:
         return f"No exposed entity matched name '{name}'"
-    if reason is intent.MatchFailedReason.AREA:
-        return f"No exposed entities found in area '{area}'"
     if reason is intent.MatchFailedReason.DOMAIN:
         return f"No exposed entities found in domain(s): {', '.join(domains or [])}"
     return "No exposed entities matched the provided filters"
@@ -96,7 +91,7 @@ class GetEntityAttributesTool(Tool):
         " an entity that the live context overview does not include, such as"
         " supported features, available options or presets, or a specific"
         " attribute by name. Provide the entity name, one of its aliases, or its"
-        " entity_id. Optionally narrow the search with a domain and/or area."
+        " entity_id. Optionally narrow the search with a domain."
     )
     annotations = ToolAnnotations(read_only=True, idempotent=True, open_world=False)
     integration = DOMAIN
@@ -113,10 +108,6 @@ class GetEntityAttributesTool(Tool):
                     " Accepts a single domain or a list."
                 ),
             ): probatio.Any(cv.string, [cv.string]),
-            probatio.Optional(
-                "area",
-                description="Filter entities by area name or alias (case-insensitive).",
-            ): cv.string,
         }
     )
 
@@ -138,7 +129,6 @@ class GetEntityAttributesTool(Tool):
             )
 
         name = args["name"]
-        area = args.get("area")
         domains = args.get("domain")
         if isinstance(domains, str):
             domains = [domains]
@@ -155,7 +145,6 @@ class GetEntityAttributesTool(Tool):
             hass,
             intent.MatchTargetsConstraints(
                 name=name,
-                area_name=area,
                 domains=domains,
                 allow_duplicate_names=True,
             ),
@@ -164,7 +153,7 @@ class GetEntityAttributesTool(Tool):
 
         if not match_result.is_match:
             return ToolResult(
-                data={"error": _match_error(match_result, name, area, domains)},
+                data={"error": _match_error(match_result, name, domains)},
                 error=True,
             )
 
