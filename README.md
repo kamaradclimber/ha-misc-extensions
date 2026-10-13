@@ -31,15 +31,15 @@ Parameters:
 Scope: only entities [exposed to the assistant](https://www.home-assistant.io/voice_control/voice_remote_expose_devices/)
 are visible, matching `GetLiveContext`.
 
-### Install
+### Install via HACS
 
 The repository is not in the default HACS catalog, so add it as a custom
-repository once:
+repository once (this requires a GitHub release to exist — see [Releases](#releases)):
 
 1. In HACS, go to the three-dots menu (top right) → **Custom repositories**.
 2. Repository URL: `https://github.com/kamaradclimber/ha-misc-extensions`,
    category: **Integration**.
-3. Install **Misc Extensions** from HACS and restart Home Assistant.
+3. **Misc Extensions** appears in HACS; install it and restart Home Assistant.
 
 Alternatively, install manually:
 
@@ -68,6 +68,12 @@ Open the integration's **Configure** button to toggle a single option:
 
 Options are read on every LLM request, so changing them takes effect on the
 assistant's next message — no restart needed.
+
+### Releases
+
+HACS installs from GitHub releases, not from `main`. Publish a tag such as
+`v0.2.1` (matching `manifest.json`'s `version`) for the custom repository to
+become installable.
 
 ### Development
 
