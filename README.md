@@ -68,3 +68,7 @@ Open the integration's **Configure** button to toggle a single option:
 
 Options are read on every LLM request, so changing them takes effect on the
 assistant's next message — no restart needed.
+
+## License
+
+Licensed under the [Apache License 2.0](LICENSE).
