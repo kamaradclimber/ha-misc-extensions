@@ -1,0 +1,11 @@
+{
+  "domain": "misc_extensions",
+  "name": "Misc Extensions",
+  "codeowners": ["@kamaradclimber"],
+  "config_flow": true,
+  "documentation": "https://github.com/kamaradclimber/ha-misc-extensions",
+  "integration_type": "service",
+  "iot_class": "local_polling",
+  "single_config_entry": true,
+  "version": "0.2.0"
+}

@@ -1,0 +1,26 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Misc Extensions",
+        "description": "Adds extra LLM tools to the Assist API. Submit to set up."
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Already configured. Only a single instance is allowed."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Misc Extensions options",
+        "data": {
+          "enable_tool": "Enable the GetEntityAttributes tool"
+        },
+        "data_description": {
+          "enable_tool": "When enabled, the misc_extensions__GetEntityAttributes tool is offered to the Assist API."
+        }
+      }
+    }
+  }
+}

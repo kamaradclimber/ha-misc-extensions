@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Home Assistant runtime state (this repo doubles as a dev config directory)
+.HA_VERSION
+.ha_run.lock
+.storage/
+.cache/
+.cloud/
+deps/
+tts/
+backups/
+home-assistant.log*
+home-assistant_v2.db*
+known_devices.yaml
+secrets.yaml
