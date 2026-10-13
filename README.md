@@ -33,17 +33,26 @@ are visible, matching `GetLiveContext`.
 
 ### Install
 
-1. Copy (or symlink) the integration into your Home Assistant config:
+The repository is not in the default HACS catalog, so add it as a custom
+repository once:
 
-   ```sh
-   ln -s "$(pwd)/custom_components/misc_extensions" \
-         /path/to/config/custom_components/misc_extensions
-   ```
+1. In HACS, go to the three-dots menu (top right) → **Custom repositories**.
+2. Repository URL: `https://github.com/kamaradclimber/ha-misc-extensions`,
+   category: **Integration**.
+3. Install **Misc Extensions** from HACS and restart Home Assistant.
 
-2. Restart Home Assistant.
+Alternatively, install manually:
 
-3. Go to **Settings → Devices & Services → Add Integration**, search for
-   **Misc Extensions**, and submit the (empty) setup form.
+```sh
+git clone https://github.com/kamaradclimber/ha-misc-extensions
+cp -r ha-misc-extensions/custom_components/misc_extensions \
+      /path/to/config/custom_components/
+```
+
+Then add the integration through the UI:
+
+1. Go to **Settings → Devices & Services → Add Integration**.
+2. Search for **Misc Extensions** and submit the (empty) setup form.
 
 The tool is added to the Assist API automatically, so any conversation agent
 configured to "Control Home Assistant" with the Assist API can use it. No
